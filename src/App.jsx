@@ -11,6 +11,7 @@ import ApiKeyBar, { useApiKey } from "./components/ApiKeyBar";
 import ContactPanel from "./components/ContactPanel";
 import DemoCTA from "./components/DemoCTA";
 import RoiCalculator from "./components/RoiCalculator";
+import Footer from "./components/Footer";
 import { analyzeLead } from "./services/analyzeLead";
 import { demoLeads } from "./data/demoLeads";
 
@@ -142,6 +143,8 @@ export default function App() {
           />
         )}
       </main>
+
+      <Footer />
 
       <ContactPanel open={contactOpen} onClose={() => setContactOpen(false)} />
     </div>
