@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Sparkles, DollarSign, Clock, TrendingUp, LayoutDashboard, Globe } from "lucide-react";
+import { Sparkles, DollarSign, Clock, TrendingUp, LayoutDashboard } from "lucide-react";
 import Header from "./components/Header";
 import HeroDemo from "./components/HeroDemo";
 import LeadForm from "./components/LeadForm";
@@ -8,6 +8,9 @@ import LeadInbox from "./components/LeadInbox";
 import MetricCard from "./components/MetricCard";
 import Pipeline from "./components/Pipeline";
 import ApiKeyBar, { useApiKey } from "./components/ApiKeyBar";
+import ContactPanel from "./components/ContactPanel";
+import DemoCTA from "./components/DemoCTA";
+import RoiCalculator from "./components/RoiCalculator";
 import { analyzeLead } from "./services/analyzeLead";
 import { demoLeads } from "./data/demoLeads";
 
@@ -30,6 +33,13 @@ export default function App() {
   // View modes: "landing" = marketing pitch + live demo (for first-time visitors / prospects)
   //             "workspace" = the actual product (for owners using it daily)
   const [view, setView] = useState("landing");
+  // Contact modal is lifted to App level so multiple places can trigger it
+  // (header button, in-workspace "send a quick message" CTA, etc.)
+  const [contactOpen, setContactOpen] = useState(false);
+  // Track whether the visitor has personally analyzed a lead. We use this to
+  // gate the in-workspace Demo CTA — only show it after they've experienced
+  // the "wow" moment so the CTA feels earned, not pushy.
+  const [hasAnalyzed, setHasAnalyzed] = useState(false);
 
   const selectedLead = useMemo(
     () => leads.find((lead) => lead.id === selectedLeadId),
@@ -91,6 +101,7 @@ export default function App() {
       setAnalysis(result);
       setLeads((current) => [newLead, ...current]);
       setSelectedLeadId(newLead.id);
+      setHasAnalyzed(true);
     } catch (error) {
       console.error(error);
       const msg = String(error.message || "");
@@ -106,7 +117,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
-      <Header view={view} onViewChange={setView} />
+      <Header
+        view={view}
+        onViewChange={setView}
+        onContactClick={() => setContactOpen(true)}
+      />
       <ApiKeyBar apiKey={apiKey} onChange={setApiKey} />
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -122,9 +137,13 @@ export default function App() {
             setSelectedLeadId={setSelectedLeadId}
             isAnalyzing={isAnalyzing}
             handleAnalyze={handleAnalyze}
+            hasAnalyzed={hasAnalyzed}
+            onContactClick={() => setContactOpen(true)}
           />
         )}
       </main>
+
+      <ContactPanel open={contactOpen} onClose={() => setContactOpen(false)} />
     </div>
   );
 }
@@ -162,6 +181,14 @@ function LandingView({ onEnterApp }) {
 
         <HeroDemo />
       </section>
+
+      {/* ROI calculator — converts abstract "money walking out" claim into
+          a personal number for the visitor's business. Lives here so it
+          comes AFTER they see the product in action, building the emotional
+          arc: see how it works → see what it'd save you → book a demo. */}
+      <section className="mb-10">
+        <RoiCalculator />
+      </section>
     </>
   );
 }
@@ -174,7 +201,9 @@ function WorkspaceView({
   selectedLeadId,
   setSelectedLeadId,
   isAnalyzing,
-  handleAnalyze
+  handleAnalyze,
+  hasAnalyzed,
+  onContactClick
 }) {
   return (
     <>
@@ -226,6 +255,14 @@ function WorkspaceView({
           />
         </div>
       </section>
+
+      {/* In-workspace conversion CTA — only after the visitor has had
+          their "wow" moment by analyzing at least one lead themselves. */}
+      {hasAnalyzed && (
+        <section className="mt-8">
+          <DemoCTA onContactClick={onContactClick} />
+        </section>
+      )}
     </>
   );
 }
