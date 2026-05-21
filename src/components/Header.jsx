@@ -25,23 +25,28 @@ export default function Header({ view, onViewChange, onContactClick }) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-ink/85 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-6 lg:px-8">
-        {/* Logo + name */}
-        <div className="flex min-w-0 items-center gap-3">
-          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-line bg-white text-black">
-            <Bot size={20} />
-          </div>
+<header className="sticky top-0 z-50 border-b border-line bg-ink/85 backdrop-blur-xl">
+  <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-6 lg:px-8">
+    {/* Logo + name */}
+    <div className="flex min-w-0 items-center gap-3">
+      {/* Your custom image logo wrapper */}
+      <div className="h-10 w-10 shrink-0 overflow-hidden rounded-2xl border border-line bg-white">
+        <img 
+          src="/TIQlogo.png" 
+          alt="TaskIQ Logo" 
+          className="h-full w-full object-cover"
+        />
+      </div>
 
-          <div className="min-w-0">
-            <h2 className="truncate text-base font-semibold text-white sm:text-lg">
-              LeadIQ Assistant
-            </h2>
-            <p className="hidden text-xs text-zinc-500 sm:block">
-              AI lead intake and reply automation
-            </p>
-          </div>
-        </div>
+      <div className="min-w-0">
+        <h2 className="truncate text-base font-semibold text-white sm:text-lg">
+          TaskIQ Assistant
+        </h2>
+        <p className="hidden text-xs text-zinc-500 sm:block">
+          AI lead intake and reply automation
+        </p>
+      </div>
+    </div>
 
         {/* DESKTOP: view toggle in the middle (md+) */}
         {view && onViewChange && (
