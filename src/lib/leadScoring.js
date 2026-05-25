@@ -10,7 +10,7 @@ const pricingWords = ["price", "pricing", "cost", "how much", "quote", "estimate
 const ECONOMICS = {
   "Med Spa": { avgTicket: 425, attachRate: 0.55 },
   "Dental Office": { avgTicket: 850, attachRate: 0.62 },
-  "Tutoring Center": { avgTicket: 600, attachRate: 0.70 },
+  "Real Estate": { avgTicket: 9500, attachRate: 0.45 },
   "Home Services": { avgTicket: 480, attachRate: 0.68 },
   "Auto Repair": { avgTicket: 380, attachRate: 0.72 },
   "Fitness Studio": { avgTicket: 140, attachRate: 0.45 },
@@ -122,8 +122,9 @@ function detectService(message, businessType) {
   if (lower.includes("hydrafacial")) return "HydraFacial";
   if (lower.includes("whitening") || lower.includes("teeth")) return "Teeth whitening";
   if (lower.includes("crown")) return "Dental crown";
-  if (lower.includes("algebra") || lower.includes("math")) return "Math tutoring";
-  if (lower.includes("sat") || lower.includes("act")) return "Test prep tutoring";
+  if (lower.includes("listing") || lower.includes("sell my home") || lower.includes("selling")) return "Home listing consultation";
+  if (lower.includes("buy") || lower.includes("looking for a home") || lower.includes("house")) return "Home buyer consultation";
+  if (lower.includes("rental") || lower.includes("invest")) return "Investment property inquiry";
   if (lower.includes("ac") || lower.includes("air conditioning")) return "AC repair";
   if (lower.includes("heat") || lower.includes("furnace")) return "Heating repair";
   if (lower.includes("leak") || lower.includes("plumb")) return "Plumbing — leak repair";

@@ -32,10 +32,10 @@ export const VERTICAL_ECONOMICS = {
     weeklyInquiries: 55,
     description: "HVAC, plumbing — peaks in TX summer"
   },
-  "Tutoring Center": {
-    avgTicket: 600,
-    weeklyInquiries: 18,
-    description: "Monthly packages — academic year cycles"
+  "Real Estate": {
+    avgTicket: 9500,
+    weeklyInquiries: 42,
+    description: "Avg TX commission $8k-15k — leads shop multiple agents simultaneously"
   },
   "Fitness Studio": {
     avgTicket: 140,

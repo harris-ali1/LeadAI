@@ -50,25 +50,25 @@ const SCENARIOS = [
     }
   },
   {
-    vertical: "Tutoring Center",
+    vertical: "Real Estate",
     customer: "Jennifer",
     message:
-      "My daughter Sophie has her Algebra 2 final next Thursday and she's really struggling. Do you have evening sessions?",
+      "Hi! I saw your listing in Katy — the 4-bed on Cypress Creek. Looking to move by August, budget around $475k. Can we tour it this weekend?",
     analysis: {
-      score: 89,
+      score: 92,
       priority: "High",
       intent: "Booking",
       urgency: "This week",
       summary:
-        "Parent (Jennifer) seeking urgent algebra help for daughter Sophie before Thursday's final. Clear deadline, named student, asking about specifics — high conversion likelihood.",
+        "Jennifer named a specific property (Cypress Creek listing), has a clear move-in deadline (August), and stated her budget upfront. She's also asking for a showing — high-intent buyer ready to act.",
       reply:
-        "Hi Jennifer! Sophie's timing is actually perfect for a focused review. We have evening sessions Mon/Tue/Wed this week at 5pm and 7pm. Want to start with a free 30-minute assessment tonight or tomorrow?",
+        "Hi Jennifer! Great timing — the Cypress Creek property is still available and a great fit for your budget. I have Saturday 11am or Sunday 2pm open for showings. Want me to lock one in and send you the address details?",
       reasoning: [
-        "Hard deadline — Thursday final",
-        "Named the student — Sophie",
-        "Asked about specific availability — evenings"
+        "Named specific property — Cypress Creek listing",
+        "Stated budget upfront ($475k) — qualified buyer",
+        "Hard deadline (August move) + asked for showing"
       ],
-      revenueAtRisk: 480
+      revenueAtRisk: 8800
     }
   }
 ];

@@ -26,11 +26,11 @@ const SAMPLES = [
       "My AC just died and it's 98 degrees in the house. Wife and 2 kids home. Can someone come TODAY??"
   },
   {
-    businessType: "Tutoring Center",
+    businessType: "Real Estate",
     name: "Jennifer Adams",
-    contact: "jen.adams@example.com",
+    contact: "jen.adams@example.com, 713-555-0188",
     message:
-      "My daughter Sophie has her Algebra 2 final next Thursday and she's really struggling with quadratics. Do you have evening sessions?"
+      "Hi! I'm looking to buy a 4-bed home in Katy TX, budget around $450k. Are you familiar with that area? Can we set up a showing this weekend?"
   },
   {
     businessType: "Dental Office",
@@ -99,7 +99,7 @@ export default function LeadForm({ onAnalyze, isAnalyzing }) {
           >
             <option>Med Spa</option>
             <option>Dental Office</option>
-            <option>Tutoring Center</option>
+            <option>Real Estate</option>
             <option>Home Services</option>
             <option>Auto Repair</option>
             <option>Fitness Studio</option>

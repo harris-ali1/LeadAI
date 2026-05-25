@@ -12,13 +12,23 @@ import ContactPanel from "./components/ContactPanel";
 import DemoCTA from "./components/DemoCTA";
 import RoiCalculator from "./components/RoiCalculator";
 import Footer from "./components/Footer";
+import HowItWorks from "./components/HowItWorks";
+import BuiltForYourBusiness from "./components/BuiltForYourBusiness";
+import FAQ from "./components/FAQ";
+import BeforeAfter from "./components/BeforeAfter";
+import StatsBanner from "./components/StatsBanner";
+import Pricing from "./components/Pricing";
+import Comparison from "./components/Comparison";
+import Integrations from "./components/Integrations";
+import FoundingClients from "./components/FoundingClients";
+import StickyMobileCTA from "./components/StickyMobileCTA";
 import { analyzeLead } from "./services/analyzeLead";
 import { demoLeads } from "./data/demoLeads";
 
 const TICKET = {
   "Med Spa": 425,
   "Dental Office": 850,
-  "Tutoring Center": 600,
+  "Real Estate": 9500,
   "Home Services": 480,
   "Auto Repair": 380,
   "Fitness Studio": 140,
@@ -127,7 +137,10 @@ export default function App() {
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         {view === "landing" ? (
-          <LandingView onEnterApp={() => setView("workspace")} />
+          <LandingView
+            onEnterApp={() => setView("workspace")}
+            onContactClick={() => setContactOpen(true)}
+          />
         ) : (
           <WorkspaceView
             metrics={metrics}
@@ -146,14 +159,20 @@ export default function App() {
 
       <Footer />
 
+      {/* Sticky mobile CTA — only on landing view, only on mobile screens.
+          Workspace doesn't need it since the in-workspace DemoCTA serves
+          the same purpose there. */}
+      {view === "landing" && <StickyMobileCTA />}
+
       <ContactPanel open={contactOpen} onClose={() => setContactOpen(false)} />
     </div>
   );
 }
 
-function LandingView({ onEnterApp }) {
+function LandingView({ onEnterApp, onContactClick }) {
   return (
     <>
+      {/* Hero — the headline grab */}
       <section className="mb-10">
         <div className="mb-6 max-w-3xl">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.06] px-3 py-1 text-sm text-zinc-300">
@@ -164,7 +183,7 @@ function LandingView({ onEnterApp }) {
             Every unanswered message is money walking out the door.
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-zinc-400">
-            LeadIQ reads every inquiry the second it arrives, scores it,
+            TaskIQ reads every inquiry the second it arrives, scores it,
             drafts the perfect reply in your business's voice, and tells your
             team exactly what to do next. Average response time drops from
             hours to seconds.
@@ -185,12 +204,64 @@ function LandingView({ onEnterApp }) {
         <HeroDemo />
       </section>
 
-      {/* ROI calculator — converts abstract "money walking out" claim into
-          a personal number for the visitor's business. Lives here so it
-          comes AFTER they see the product in action, building the emotional
-          arc: see how it works → see what it'd save you → book a demo. */}
+      {/* Stats banner — 3 credibility-anchoring numbers right after the
+          first engagement moment. Industry data, no fake metrics. */}
+      <section className="mb-10">
+        <StatsBanner />
+      </section>
+
+      {/* Before / After visual — the emotional core of the pitch.
+          Chaos → structured = visceral. */}
+      <section className="mb-10">
+        <BeforeAfter />
+      </section>
+
+      {/* How it works — explains the product flow in 8 seconds. */}
+      <section className="mb-10">
+        <HowItWorks />
+      </section>
+
+      {/* Integrations strip — small, builds trust that we plug into
+          existing tools rather than replacing them. */}
+      <section className="mb-10">
+        <Integrations />
+      </section>
+
+      {/* Vertical pain cards — moved above ROI per the user's preference.
+          Prospects pick "their" vertical here, then the ROI number lands
+          harder because they're already mentally in their own business. */}
+      <section className="mb-10">
+        <BuiltForYourBusiness />
+      </section>
+
+      {/* ROI calculator — personal dollar number for their business. */}
       <section className="mb-10">
         <RoiCalculator />
+      </section>
+
+      {/* Comparison — TaskIQ vs manual vs hiring a VA. Reframes the
+          decision from "which AI tool" to "what's the smartest path." */}
+      <section className="mb-10">
+        <Comparison />
+      </section>
+
+      {/* Pricing — three tiers, founding rate highlighted. Removes the
+          biggest pre-call objection: "I don't know what this costs." */}
+      <section className="mb-10">
+        <Pricing onContactClick={onContactClick} />
+      </section>
+
+      {/* Founding clients — honest social proof. Frames the "no clients yet"
+          gap as an opportunity (limited spots) rather than a weakness. */}
+      <section className="mb-10">
+        <FoundingClients onContactClick={onContactClick} />
+      </section>
+
+      {/* FAQ — pre-empts the most common objections before they ever come up
+          on a sales call. Bottom CTAs catch the prospects who are ready
+          to talk after scrolling the whole page. */}
+      <section className="mb-10">
+        <FAQ onContactClick={onContactClick} />
       </section>
     </>
   );

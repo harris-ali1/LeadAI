@@ -12,8 +12,8 @@ const VERTICAL_VOICE = {
     "Warm, polished, confidence-building. Use first names. Reference 'consultations' not 'appointments' for new clients. Never quote firm prices over message — invite them in for a quick consult instead. Subtle, never pushy.",
   "Dental Office":
     "Calm, professional, reassuring. Many leads are anxious. Acknowledge timelines (weddings, photos, events) when mentioned. Mention insurance is welcome when relevant. Offer 2 concrete time slots.",
-  "Tutoring Center":
-    "Encouraging, parent-friendly. Reference the student by name when given. Acknowledge the exam/deadline pressure. Mention a free assessment session. Use the parent's name in the reply.",
+  "Real Estate":
+    "Professional, responsive, and urgency-aware. Leads expect instant replies — they're often talking to multiple agents. Reference the specific property or area they mentioned. Offer a showing or call within 24 hours. Never be pushy but always be fast.",
   "Home Services":
     "Direct, action-oriented, time-aware. If urgent (no AC, no heat, leak), promise a callback window in minutes, not hours. Mention the service area and ETA. Skip pleasantries when the customer is stressed.",
   "Auto Repair":
@@ -29,7 +29,7 @@ const VERTICAL_VOICE = {
 const VERTICAL_ECONOMICS = {
   "Med Spa": { avgTicket: 425, attachRate: 0.55, repeatValue: 1.8, notes: "Single treatment $200-800. Strong repeat-visit value." },
   "Dental Office": { avgTicket: 850, attachRate: 0.62, repeatValue: 2.4, notes: "Cleanings $150, crowns $1500+. Insurance covers most." },
-  "Tutoring Center": { avgTicket: 600, attachRate: 0.70, repeatValue: 4.0, notes: "Monthly packages $400-1500. High LTV — students stay months." },
+  "Real Estate": { avgTicket: 9500, attachRate: 0.45, repeatValue: 2.5, notes: "Avg TX commission $8k-15k+. Leads shop multiple agents simultaneously — response time is everything." },
   "Home Services": { avgTicket: 480, attachRate: 0.68, repeatValue: 1.3, notes: "Diagnostic $89-150, repair $200-3000. Urgent jobs convert fast." },
   "Auto Repair": { avgTicket: 380, attachRate: 0.72, repeatValue: 1.5, notes: "Diagnostic $120, repair attach $200 avg. Trust drives repeats." },
   "Fitness Studio": { avgTicket: 140, attachRate: 0.45, repeatValue: 6.0, notes: "Intro class $0-30, membership $80-200/mo. Long LTV." },
