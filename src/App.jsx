@@ -17,10 +17,9 @@ import BuiltForYourBusiness from "./components/BuiltForYourBusiness";
 import FAQ from "./components/FAQ";
 import BeforeAfter from "./components/BeforeAfter";
 import StatsBanner from "./components/StatsBanner";
-import Pricing from "./components/Pricing";
+import GetStarted from "./components/GetStarted";
 import Comparison from "./components/Comparison";
 import Integrations from "./components/Integrations";
-import FoundingClients from "./components/FoundingClients";
 import StickyMobileCTA from "./components/StickyMobileCTA";
 import { analyzeLead } from "./services/analyzeLead";
 import { demoLeads } from "./data/demoLeads";
@@ -245,19 +244,14 @@ function LandingView({ onEnterApp, onContactClick }) {
         <Comparison />
       </section>
 
-      {/* Pricing — three tiers, founding rate highlighted. Removes the
-          biggest pre-call objection: "I don't know what this costs." */}
+      {/* Get started — replaces the pricing section. Redirects to a
+          demo call instead of a credit card. Pricing discussed on call
+          after they've seen the value, not before. */}
       <section className="mb-10">
-        <Pricing onContactClick={onContactClick} />
+        <GetStarted onContactClick={onContactClick} />
       </section>
 
-      {/* Founding clients — honest social proof. Frames the "no clients yet"
-          gap as an opportunity (limited spots) rather than a weakness. */}
-      <section className="mb-10">
-        <FoundingClients onContactClick={onContactClick} />
-      </section>
-
-      {/* FAQ — pre-empts the most common objections before they ever come up
+      {/* FAQ  — pre-empts the most common objections before they ever come up
           on a sales call. Bottom CTAs catch the prospects who are ready
           to talk after scrolling the whole page. */}
       <section className="mb-10">

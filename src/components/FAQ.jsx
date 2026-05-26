@@ -33,7 +33,7 @@ const FAQS = [
   },
   {
     q: "What does it cost?",
-    a: "Founding clients pay $49/month for the first 3 months, then $149/month. No setup fee. We're limiting the founding rate to the first 5 businesses per vertical — after that, regular pricing applies."
+    a: "We keep pricing simple and cover it on your demo call once we understand your setup — it depends on which channels you need and your lead volume. Most clients are set up for under $200/month. No setup fees, no contracts, cancel anytime."
   },
   {
     q: "Is my customer data safe?",
