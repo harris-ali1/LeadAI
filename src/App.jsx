@@ -18,6 +18,7 @@ import FAQ from "./components/FAQ";
 import BeforeAfter from "./components/BeforeAfter";
 import StatsBanner from "./components/StatsBanner";
 import GetStarted from "./components/GetStarted";
+import ParticleBackground from "./components/ParticleBackground";
 import Comparison from "./components/Comparison";
 import Integrations from "./components/Integrations";
 import StickyMobileCTA from "./components/StickyMobileCTA";
@@ -126,12 +127,19 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen">
-      <Header
-        view={view}
-        onViewChange={setView}
-        onContactClick={() => setContactOpen(true)}
-      />
+    <>
+      {/* Full-page animated particle background — landing view only.
+          Fixed canvas at z-0 behind all content. Sits as a sibling to the
+          main wrapper so it doesn't create stacking-context conflicts with
+          the sticky header. */}
+      {view === "landing" && <ParticleBackground />}
+
+      <div className="relative z-10 min-h-screen">
+        <Header
+          view={view}
+          onViewChange={setView}
+          onContactClick={() => setContactOpen(true)}
+        />
       <ApiKeyBar apiKey={apiKey} onChange={setApiKey} />
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -164,7 +172,8 @@ export default function App() {
       {view === "landing" && <StickyMobileCTA />}
 
       <ContactPanel open={contactOpen} onClose={() => setContactOpen(false)} />
-    </div>
+      </div>
+    </>
   );
 }
 
